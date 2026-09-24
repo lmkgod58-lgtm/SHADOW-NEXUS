@@ -1,4 +1,728 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SHADOW NEXUS</title><link rel="stylesheet" href="style.css"></head><body><header><b>SHADOW NEXUS</b><span>PERSONAL DIGITAL LABORATORY</span><i id="status">● ONLINE</i><time id="clock"></time></header><main><section class="hero"><div><p>/// SHADOW LAYER</p><h1>ENTER THE<br><strong>SHADOW NEXUS.</strong></h1><p>AI • CYBER • DEV • WEB INTEL • EXPERIMENTS</p><button onclick="openModule('cyber')">OPEN CYBER LAB</button> <button onclick="openModule('experiments')">VIEW EXPERIMENTS</button></div><div class="core"><div>NX</div></div></section><section class="stats"><div>CORE <b>ACTIVE</b></div><div>SERVICES <b id="services">4</b></div><div>REQUESTS <b id="requests">0</b></div><div>LATENCY <b id="latency">--</b></div></section><section class="modules"><article onclick="openModule('cyber')"><small>01</small><h2>CYBER LAB</h2><p>Authorized security training and local labs.</p></article><article onclick="openModule('ai')"><small>02</small><h2>AI CORE</h2><p>Provider-ready AI gateway architecture.</p></article><article onclick="openModule('intel')"><small>03</small><h2>WEB INTEL</h2><p>Research tools for permitted public resources.</p></article><article onclick="openModule('experiments')"><small>04</small><h2>EXPERIMENT LAB</h2><p>Build, test and break your own ideas.</p></article><article onclick="openModule('dev')"><small>05</small><h2>DEV CORE</h2><p>APIs, deployments and project utilities.</p></article><article onclick="openModule('monitor')"><small>06</small><h2>SYSTEM MONITOR</h2><p>Service health and latency telemetry.</p></article></section><section class="terminal"><div class="termhead">NEXUS TERMINAL <span>LOCAL CONSOLE</span></div><pre id="output">SHADOW NEXUS v1.0
-Type: help
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-</pre><input id="cmd" placeholder="type a command..." autocomplete="off"></section></main><div id="modal" class="modal"><div class="box"><button class="x" onclick="closeModal()">×</button><h2 id="modalTitle"></h2><p id="modalBody"></p></div></div><footer>GITHUB PAGES + RENDER ARCHITECTURE</footer><script src="app.js"></script></body></html>
+    <meta
+        name="description"
+        content="SHADOW NEXUS - Personal Digital Laboratory"
+    >
+
+    <title>SHADOW NEXUS</title>
+
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+    <!-- Background effects -->
+    <div class="background-grid"></div>
+    <div class="scanlines"></div>
+    <div class="ambient-glow glow-one"></div>
+    <div class="ambient-glow glow-two"></div>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-symbol">
+                ◈
+            </div>
+
+            <div>
+                <h1>SHADOW NEXUS</h1>
+                <span>YOUR DIGITAL LABORATORY</span>
+            </div>
+
+        </div>
+
+        <div class="top-status">
+
+            <div class="status-dot"></div>
+
+            <span id="globalStatus">
+                NEXUS ONLINE
+            </span>
+
+            <span class="separator">|</span>
+
+            <span id="clock">
+                00:00:00
+            </span>
+
+        </div>
+
+        <button
+            class="menu-button"
+            id="mobileMenuButton"
+            aria-label="Open navigation"
+        >
+            ☰
+        </button>
+
+    </header>
+
+
+    <!-- ================= APP ================= -->
+
+    <div class="app-layout">
+
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-header">
+                <span class="small-label">NEXUS SYSTEM</span>
+            </div>
+
+            <nav class="navigation">
+
+                <a
+                    href="index.html"
+                    class="nav-item active"
+                >
+                    <span class="nav-icon">⌂</span>
+                    <span>Home</span>
+                </a>
+
+                <a
+                    href="ai-core.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">◉</span>
+                    <span>AI Core</span>
+                </a>
+
+                <a
+                    href="cyber-lab.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">⬡</span>
+                    <span>Cyber Lab</span>
+                </a>
+
+                <a
+                    href="web-intel.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">◎</span>
+                    <span>Web Intel</span>
+                </a>
+
+                <a
+                    href="experiments.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">⚗</span>
+                    <span>Experiments</span>
+                </a>
+
+                <a
+                    href="dev-core.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">&lt;/&gt;</span>
+                    <span>Dev Core</span>
+                </a>
+
+                <a
+                    href="monitor.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">⌁</span>
+                    <span>System Monitor</span>
+                </a>
+
+                <div class="nav-divider"></div>
+
+                <a
+                    href="settings.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">⚙</span>
+                    <span>Settings</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="version-card">
+
+                    <span>SHADOW NEXUS</span>
+
+                    <strong>v1.0</strong>
+
+                    <div class="mini-online">
+                        <i></i>
+                        SYSTEM ONLINE
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+
+        <main class="main-content">
+
+
+            <!-- HERO -->
+
+            <section class="hero-panel">
+
+                <div class="hero-content">
+
+                    <div class="welcome-label">
+                        <span class="pulse-dot"></span>
+                        WELCOME TO THE SHADOW LAYER
+                    </div>
+
+                    <h2>
+                        SHADOW
+                        <span>NEXUS</span>
+                    </h2>
+
+                    <p>
+                        Explore.
+                        Learn.
+                        Build.
+                        Experiment.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a
+                            href="ai-core.html"
+                            class="primary-button"
+                        >
+                            ENTER AI CORE
+                            <span>→</span>
+                        </a>
+
+                        <a
+                            href="cyber-lab.html"
+                            class="secondary-button"
+                        >
+                            OPEN CYBER LAB
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Anime-inspired core -->
+
+                <div class="nexus-core">
+
+                    <div class="core-ring ring-one"></div>
+                    <div class="core-ring ring-two"></div>
+                    <div class="core-ring ring-three"></div>
+
+                    <div class="core-eye">
+                        ◉
+                    </div>
+
+                    <div class="core-label">
+                        NX
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- MODULES -->
+
+            <section class="section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="small-label">
+                            NEXUS MODULES
+                        </span>
+
+                        <h3>
+                            DIGITAL LABORATORY
+                        </h3>
+                    </div>
+
+                    <span class="module-count">
+                        07 MODULES
+                    </span>
+
+                </div>
+
+
+                <div class="module-grid">
+
+
+                    <!-- AI -->
+
+                    <a
+                        href="ai-core.html"
+                        class="module-card ai-card"
+                    >
+
+                        <div class="module-image ai-image">
+                            ◉
+                        </div>
+
+                        <div class="module-body">
+
+                            <div class="module-title">
+                                AI CORE
+                            </div>
+
+                            <p>
+                                Intelligence, conversations,
+                                coding assistance and research.
+                            </p>
+
+                            <div class="module-footer">
+
+                                <span class="online">
+                                    ● ONLINE
+                                </span>
+
+                                <span class="launch">
+                                    LAUNCH →
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- CYBER -->
+
+                    <a
+                        href="cyber-lab.html"
+                        class="module-card cyber-card"
+                    >
+
+                        <div class="module-image cyber-image">
+                            ◈
+                        </div>
+
+                        <div class="module-body">
+
+                            <div class="module-title">
+                                CYBER LAB
+                            </div>
+
+                            <p>
+                                Authorized security training,
+                                vulnerable labs and experiments.
+                            </p>
+
+                            <div class="module-footer">
+
+                                <span class="online">
+                                    ● ONLINE
+                                </span>
+
+                                <span class="launch">
+                                    LAUNCH →
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- WEB INTEL -->
+
+                    <a
+                        href="web-intel.html"
+                        class="module-card web-card"
+                    >
+
+                        <div class="module-image web-image">
+                            ◎
+                        </div>
+
+                        <div class="module-body">
+
+                            <div class="module-title">
+                                WEB INTEL
+                            </div>
+
+                            <p>
+                                Analyze permitted web resources
+                                and inspect useful information.
+                            </p>
+
+                            <div class="module-footer">
+
+                                <span class="online">
+                                    ● ONLINE
+                                </span>
+
+                                <span class="launch">
+                                    LAUNCH →
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- EXPERIMENTS -->
+
+                    <a
+                        href="experiments.html"
+                        class="module-card experiment-card"
+                    >
+
+                        <div class="module-image experiment-image">
+                            ⚗
+                        </div>
+
+                        <div class="module-body">
+
+                            <div class="module-title">
+                                EXPERIMENTS
+                            </div>
+
+                            <p>
+                                Test ideas, prototypes,
+                                APIs and strange inventions.
+                            </p>
+
+                            <div class="module-footer">
+
+                                <span class="online">
+                                    ● READY
+                                </span>
+
+                                <span class="launch">
+                                    LAUNCH →
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- DEV -->
+
+                    <a
+                        href="dev-core.html"
+                        class="module-card dev-card"
+                    >
+
+                        <div class="module-image dev-image">
+                            &lt;/&gt;
+                        </div>
+
+                        <div class="module-body">
+
+                            <div class="module-title">
+                                DEV CORE
+                            </div>
+
+                            <p>
+                                Developer utilities and
+                                programming tools.
+                            </p>
+
+                            <div class="module-footer">
+
+                                <span class="online">
+                                    ● ONLINE
+                                </span>
+
+                                <span class="launch">
+                                    LAUNCH →
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- MONITOR -->
+
+                    <a
+                        href="monitor.html"
+                        class="module-card monitor-card"
+                    >
+
+                        <div class="module-image monitor-image">
+                            ⌁
+                        </div>
+
+                        <div class="module-body">
+
+                            <div class="module-title">
+                                SYSTEM MONITOR
+                            </div>
+
+                            <p>
+                                Services, latency, uptime
+                                and system health.
+                            </p>
+
+                            <div class="module-footer">
+
+                                <span class="online">
+                                    ● MONITORING
+                                </span>
+
+                                <span class="launch">
+                                    LAUNCH →
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- LOWER GRID -->
+
+            <section class="lower-grid">
+
+
+                <!-- SYSTEM STATUS -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span class="panel-icon">⌁</span>
+                            SYSTEM STATUS
+                        </div>
+
+                        <span class="live-label">
+                            LIVE
+                        </span>
+
+                    </div>
+
+
+                    <div class="service-list">
+
+                        <div class="service-row">
+
+                            <div>
+                                <span class="service-dot"></span>
+                                GitHub Pages
+                            </div>
+
+                            <span class="service-status">
+                                ONLINE
+                            </span>
+
+                        </div>
+
+
+                        <div class="service-row">
+
+                            <div>
+                                <span
+                                    class="service-dot waiting"
+                                ></span>
+                                Gateway
+                            </div>
+
+                            <span
+                                class="service-status waiting-text"
+                            >
+                                WAITING
+                            </span>
+
+                        </div>
+
+
+                        <div class="service-row">
+
+                            <div>
+                                <span
+                                    class="service-dot waiting"
+                                ></span>
+                                AI Core
+                            </div>
+
+                            <span
+                                class="service-status waiting-text"
+                            >
+                                WAITING
+                            </span>
+
+                        </div>
+
+
+                        <div class="service-row">
+
+                            <div>
+                                <span
+                                    class="service-dot waiting"
+                                ></span>
+                                Monitor
+                            </div>
+
+                            <span
+                                class="service-status waiting-text"
+                            >
+                                WAITING
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK ACTIONS -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span class="panel-icon">⚡</span>
+                            QUICK ACTIONS
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-grid">
+
+                        <a href="ai-core.html">
+                            ◉
+                            <span>CHAT WITH AI</span>
+                        </a>
+
+                        <a href="cyber-lab.html">
+                            ◈
+                            <span>START LAB</span>
+                        </a>
+
+                        <a href="web-intel.html">
+                            ◎
+                            <span>WEB INTEL</span>
+                        </a>
+
+                        <a href="experiments.html">
+                            ⚗
+                            <span>RUN EXPERIMENT</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TERMINAL -->
+
+                <div class="panel terminal-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span class="panel-icon">
+                                &gt;_
+                            </span>
+
+                            NEXUS TERMINAL
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="terminal-output"
+                        id="terminalOutput"
+                    >
+                        <div>
+                            SHADOW NEXUS SYSTEM
+                        </div>
+
+                        <div>
+                            Type <b>help</b> for commands.
+                        </div>
+
+                        <div class="terminal-cursor">
+                            _
+                        </div>
+
+                    </div>
+
+                    <div class="terminal-input">
+
+                        <span>&gt;</span>
+
+                        <input
+                            type="text"
+                            id="terminalInput"
+                            placeholder="Enter command..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer class="footer">
+
+                <div>
+                    SHADOW NEXUS
+                    <span>•</span>
+                    PERSONAL DIGITAL LABORATORY
+                </div>
+
+                <div>
+                    GITHUB PAGES
+                    <span>+</span>
+                    RENDER
+                </div>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+                      </html>
